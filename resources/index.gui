@@ -1,0 +1,83 @@
+<svg>
+
+<use id="backgroundAnimation" href="#background"/>
+
+<text id="batteryLabel"/>
+
+<g id="displayElements">
+  <g id="displayElementsBaseView">
+    <text class="textInfoElements displayElement" id="hourLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement" id="minuteLabel" visibility = "visible" pointer-events="visible"/>
+    <text class="textInfoElements displayElement" id="timeColon" visibility = "visible" pointer-events="visible">:</text>
+    <text class="textInfoElements displayElement" id="dateLabel" visibility = "visible"/>
+  </g>
+  <g>
+  <image class="displayElement" href="images/sundry/footPrint_1.png" id="footPrint" visibility = "hidden" />
+  <text class="textInfoElements displayElement" id="stepsLabel" visibility = "hidden"/>
+  <image class="displayElement" href="images/sundry/heart_1.png" id="heart" visibility = "hidden" />
+  <text class="textInfoElements displayElement" id="heartrateLabel" visibility = "hidden"/>
+  </g>
+  <animate id="sleepElement2" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+</g>
+
+
+
+<g id="cornerButtons">
+  <g id= "timerButtons">
+  <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
+  </g>
+  <animate id="sleepElement3" class="fadeDisplayElements" attributeName="opacity" begin="enable" from="1" to="0" dur="1" final="keep" />
+</g>
+
+<g id="jumpGroup">
+  <image href="images/slimes/Green/jumpSlime_2.png" id="jump2" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_3.png" id="jump3" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_4.png" id="jump4" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_5.png" id="jump5" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_4.png" id="jump6" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_6.png" id="jump7" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_7.png" id="jump8" class="jumpAnimation" visibility = "hidden"/>
+  <image href="images/slimes/Green/jumpSlime_8.png" id="jump9" class="jumpAnimation" visibility = "hidden"/>
+</g>
+
+<g id="fishGroup">
+  <image href="images/fishing/Green/fishin_1.png" id="fish1" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_2.png" id="fish2" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_3.png" id="fish3" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_4.png" id="fish4" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_5.png" id="fish5" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_6.png" id="fish6" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_7.png" id="fish7" class="fishAnimation" visibility = "hidden"/>
+  <image href="images/fishing/Green/fishin_8.png" id="fish8" class="fishAnimation" visibility = "hidden"/>
+</g>
+
+<g id="slimes">
+  <image href="images/slimes/Green/sadSlime_1.png" id="slime" class="coreSlime" pointer-events="visible" visibility =  "visible"/>
+  <image href="images/slimes/Green/sleepSlime_1.png" id="sleeping" class="coreSlime" pointer-events="visible" visibility =  "hidden"/>
+  <image href="images/slimes/Green/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
+</g>
+
+<use id="exclaimation" href="#fadeExclaimation" opacity="0" />
+<use id="zzz" href="#fadezzz"  visibility = "hidden" opacity="0" />
+
+<g id= "foodAnimations">
+  <use id="burgerAnimation" href="#burger" class = "foodAnimation" visibility = "hidden"/>
+  <use id="sushiAnimation" href="#sushi" class = "foodAnimation" visibility = "hidden" />
+  <use id="tacoAnimation" href="#taco" class = "foodAnimation" visibility = "hidden"/>
+</g>
+
+
+<g id="fishPrizes">
+  <image href="images/fishing/star_1.png" id="star" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/boot_1.png" id="boot" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/anchovy_1.png" id="anchovy" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/bream_1.png" id="bream" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/crimson_1.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/blobfish_1.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
+</g>
+
+
+</svg>

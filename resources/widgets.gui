@@ -1,0 +1,63 @@
+<svg>
+  <defs>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="import" href="/mnt/sysassets/widgets_common.gui"/>
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/tumblerview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/tile_list_widget.gui" />
+
+
+    <symbol id="background" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="load"
+        from="01" to="16" dur="0.5"
+        repeatCount="indefinite" />
+    <image href="images/background_01.png"/>
+
+    </symbol>
+
+    <symbol id="fadeExclaimation" href="#sprite-image">
+    <animate attributeName="opacity" begin="enable"
+      from="0" to="0.6" dur="0.2" final="keep"/>
+    <animate attributeName="opacity" begin="enable+0.3"
+      from="0.6" to="0" dur="0.2" final="keep"/>
+    <image href="images/sundry/exclaimation_1.png" width="16%" height="20%" x="95" y="155" />
+    </symbol>
+
+    <symbol id="fadezzz" href="#sprite-image">
+    <animate attributeName="opacity" begin="enable"
+      from="0" to="0.9" dur="3" final="keep"
+      repeatCount="indefinite" repeatDur="7"
+      />
+    <animate attributeName="opacity" begin="enable+4"
+      from="0.9" to="0" dur="3" final="keep"
+      repeatCount="indefinite" repeatDur="7"
+      />
+    <image href="images/sundry/zzz_1.png" width="50%" height="43%" x="145" y="65" />
+    </symbol>
+
+    <symbol id="burger" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/burger_1.png" width="22%" height="22%" x="140" y="200" />
+
+    </symbol>
+
+    <symbol id="sushi" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/sushi_1.png" width="20%" height="23%" x="127" y="200" />
+
+    </symbol>
+
+    <symbol id="taco" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="2"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/food/taco_1.png" width="30%" height="30%" x="125" y="190" />
+
+    </symbol>
+
+  </defs>
+</svg>

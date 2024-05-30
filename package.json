@@ -1,0 +1,37 @@
+{
+  "name": "slimeface",
+  "version": "1.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fitbit/sdk": "~4.0.0",
+    "@fitbit/sdk-cli": "^1.7.3"
+  },
+  "fitbit": {
+    "appUUID": "7c17eef1-fcab-4b8a-9ab7-14bbc9811864",
+    "appType": "clockface",
+    "appDisplayName": "Slimeface",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#ffffff",
+    "requestedPermissions": [
+      "access_activity",
+      "access_aod",
+      "access_exercise",
+      "access_heart_rate",
+      "access_internet",
+      "access_location",
+      "run_background",
+      "access_sleep",
+      "access_user_profile"
+    ],
+    "buildTargets": [
+      "mira"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
