@@ -97,6 +97,7 @@ export function toggleVisibility(element){
 }
 
 export function toggleManyVisibility(elements){
+  console.log("toggle many");
   //change visibilty of all elements in an array
   elements.forEach((element) => {
     toggleVisibility(element)
@@ -111,25 +112,30 @@ export function toggleOpacity(handle){
 }
 
 
-export function whichFish(frames) {
+export function whichFish() {
   // pick a random fish to display
   let randomPercentage =  Math.floor(Math.random() * 100) + 1
   let result = ""
   if (randomPercentage <= 10)
+  //boot
   {
-    result = frames.boot;
+    result = 0;
   } else if (randomPercentage >= 11 && randomPercentage <= 50)
+  //anchovy
   {
-    result = frames.anchovy;
+    result = 1;
   } else if (randomPercentage >= 51 && randomPercentage <= 75)
+  //bream
   {
-    result = frames.bream;
+    result = 2;
   } else if (randomPercentage >= 76 && randomPercentage <= 95)
+  //crimson
   {
-    result = frames.crimson;
+    result = 3;
   } else if (randomPercentage >= 96)
+  //blobfish
   {
-    result = frames.blobfish;
+    result = 4;
   }
 
   return result

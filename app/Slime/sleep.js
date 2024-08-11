@@ -4,7 +4,7 @@ import document from "document";
 //----
 //helper imports
 import { eventListenersHandler, eventListenerRemoved, eventListenerSetup } from '../Helper/helper.js';
-import { sleepBubble as sleepBubbleElement, animateDisplayElements as animateSleepElements, tumblerDelete } from '../Helper/components.js';
+import { sleepBubble as sleepBubbleElement, animateDisplayElements as animateSleepElements} from '../Helper/components.js';
 //----
 //system imports
 import { BodyPresenceSensor } from "body-presence";
@@ -28,6 +28,7 @@ export let buttonsAndCallbacksWithoutSleep;
 
 //---BODY---
 //variables
+let previousBodyPresence = null;
 //----
 //main body
 
@@ -55,11 +56,16 @@ export function sleepBoot(slime, sleepSlime, allButtonsAndCallbacks) {
 function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
   //take action dependant on wether fitbit is on wrist or not
-  if (bodyPresence && bodyPresence.present) {
+  if (bodyPresence && bodyPresence.present && !previousBodyPresence) {
+    // Body presence changed to present
     wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements);
-  } else {
+  } else if (!bodyPresence.present && previousBodyPresence) {
+    // Body presence changed to not present
     sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements);
   }
+
+  // Update previous state
+  previousBodyPresence = bodyPresence.present;
 
 }
 
@@ -80,13 +86,11 @@ export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) 
 export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
   if (slime.style.visibility !== "visible"){
+
     //hide sleep elements
+    slime.style.visibility = "visible"
     sleepBubble.style.visibility = "hidden"
     sleepSlime.style.visibility = "hidden"
-    // if sleep was activated on delete alarm tumbler screen then do not reactivate slime
-    if (tumblerDelete.style.visibility !== "visible"){
-      slime.style.visibility = "visible"
-    }
     //fade back in all infomatics
     fadeElement(animateSleepElements, 0, 1);
     sleepBubble.animate("disable");

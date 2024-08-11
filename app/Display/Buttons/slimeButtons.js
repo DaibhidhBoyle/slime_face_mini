@@ -2,7 +2,7 @@
 //document
 //----
 //helper imports
-import { jumpFramesUnaltered, timerButtonElements, colorButtonElements, tumblerHour, tumblerMin, slimeButtonState } from '../../Helper/components.js';
+import { jumpFramesUnaltered, timerButtonElements, slimeButtonState } from '../../Helper/components.js';
 import { animationObjectify, toggleManyVisibility } from '../../Helper/helper.js';
 //----
 //system imports
@@ -14,9 +14,6 @@ import { animationObjectify, toggleManyVisibility } from '../../Helper/helper.js
 import { startButtonAnimation } from '../animations.js';
 //----
 //external file imports
-import { getTumblersInfo } from '../../Alarm/setUpAlarmTumbler.js';
-import { slimeButtonClickFunctionality } from '../../Alarm/alarmTimeButtons.js';
-import { sendToAlarm, resetScreen, resetAlarmElements } from '../../Alarm/alarmDayButtons.js';
 //----
 
 //---EXPORTS---
@@ -42,7 +39,7 @@ export function slimeButton(mainSlime, toggableHTMLElements, clickData) {
 
   //process when button pushed
   let slimeClick = () => {
-    handleSlimeButtonClick(mainSlime, toggableHTMLElements, clickData, jumpFrames, jumpFrameTimes);
+    handleSlimeButtonClick(toggableHTMLElements, clickData, jumpFrames, jumpFrameTimes);
   };
 
   //return to be processed into event listener by button.js
@@ -57,22 +54,9 @@ function setupJumpFrames(mainSlime) {
   return jumpFrames;
 }
 
-function handleSlimeButtonClick(mainSlime, elements, clickData, slimeFrames, slimeTimes) {
-  //depending on slimeButtonsState excute action on click
-  if (slimeButtonState === 1) {
-    //toggle between base view and color select screen
-    toggleManyVisibility(elements);
-    toggleManyVisibility([...timerButtonElements.children, ...colorButtonElements.children])
-  } else if (slimeButtonState === 2) {
-    //after a clock button click, take time on alarm tumbler and pass to alarmDayButtons to be put into alarms, then switch to alarm day select screen
-    let tumblerElements = getTumblersInfo(tumblerHour, tumblerMin);
-    alarmElementListeners = slimeButtonClickFunctionality(tumblerElements);
-  } else if (slimeButtonState === 3) {
-    //set up alarm and switch to base view
-    sendToAlarm();
-    resetScreen();
-    resetAlarmElements(alarmElementListeners);
-  }
+function handleSlimeButtonClick(toggableHTMLElements, clickData, slimeFrames, slimeTimes) {
+  //toggle between base view and color select screen
+  toggleManyVisibility(toggableHTMLElements);
   //send to animate.js
   startButtonAnimation(slimeFrames, slimeTimes, clickData);
 }

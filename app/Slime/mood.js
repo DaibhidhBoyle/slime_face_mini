@@ -3,7 +3,7 @@
 import document from "document";
 //----
 //helper imports
-import { sleepSlime } from '../../Helper/components.js';
+import { sleepSlime } from '../Helper/components.js';
 //----
 //system imports
 import { vibration } from "haptics";
@@ -57,7 +57,7 @@ export function makeSad(){
   clearInterval(slimeCheckInterval);
   moodSlime.image = `${getSlimeImagePath()}sadSlime_1.png`;
   // set vibration after period of time
-  slimeCheckInterval = setInterval(slimeCheckIn, 10 * 60 * 1000);
+  slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
 }
 
 function resetTimeout(time, callback) {
@@ -75,7 +75,7 @@ function slimeCheckIn(){
       vibration.start("nudge");
     }
   }
-  
+
 }
 
 function getSlimeImagePath() {

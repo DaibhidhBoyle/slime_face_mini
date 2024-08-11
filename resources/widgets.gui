@@ -6,33 +6,46 @@
     <link rel="import" href="/mnt/sysassets/widgets/tumblerview_widget.gui" />
     <link rel="import" href="/mnt/sysassets/widgets/tile_list_widget.gui" />
 
-
-    <symbol id="background" href="#sprite-image">
-    <animate id="anim" attributeName="value" begin="load"
-        from="01" to="16" dur="0.5"
-        repeatCount="indefinite" />
-    <image href="images/background_01.png"/>
-
+    <symbol id="exclaimation" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="01" to="14" dur="7"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/sundry/exclaimation_01.png" width="16%" height="20%" x="95" y="155" />
     </symbol>
 
-    <symbol id="fadeExclaimation" href="#sprite-image">
-    <animate attributeName="opacity" begin="enable"
-      from="0" to="0.6" dur="0.2" final="keep"/>
-    <animate attributeName="opacity" begin="enable+0.3"
-      from="0.6" to="0" dur="0.2" final="keep"/>
-    <image href="images/sundry/exclaimation_1.png" width="16%" height="20%" x="95" y="155" />
+    <symbol id="blobfish" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="10.5"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/fishing/blobfish_1.png"/>
     </symbol>
 
-    <symbol id="fadezzz" href="#sprite-image">
-    <animate attributeName="opacity" begin="enable"
-      from="0" to="0.9" dur="3" final="keep"
-      repeatCount="indefinite" repeatDur="7"
-      />
-    <animate attributeName="opacity" begin="enable+4"
-      from="0.9" to="0" dur="3" final="keep"
-      repeatCount="indefinite" repeatDur="7"
-      />
-    <image href="images/sundry/zzz_1.png" width="50%" height="43%" x="145" y="65" />
+    <symbol id="boot" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="10.5"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/fishing/boot_1.png" />
+    </symbol>
+
+    <symbol id="bream" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="10.5"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/fishing/bream_1.png"/>
+    </symbol>
+
+    <symbol id="crimson" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="10.5"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/fishing/crimson_1.png"/>
+    </symbol>
+
+    <symbol id="gold" href="#sprite-image">
+    <animate id="anim" attributeName="value" begin="enable"
+        from="1" to="4" dur="10.5"
+        repeatDur="0" repeatCount="indefinite" />
+    <image href="images/fishing/gold_1.png"/>
     </symbol>
 
     <symbol id="burger" href="#sprite-image">
@@ -40,7 +53,6 @@
         from="1" to="4" dur="2"
         repeatDur="0" repeatCount="indefinite" />
     <image href="images/food/burger_1.png" width="22%" height="22%" x="140" y="200" />
-
     </symbol>
 
     <symbol id="sushi" href="#sprite-image">
@@ -57,6 +69,18 @@
         repeatDur="0" repeatCount="indefinite" />
     <image href="images/food/taco_1.png" width="30%" height="30%" x="125" y="190" />
 
+    </symbol>
+
+    <symbol id="fadezzz" href="#sprite-image">
+    <animate attributeName="opacity" begin="enable"
+      from="0" to="0.9" dur="3" final="keep"
+      repeatCount="indefinite" repeatDur="7"
+      />
+    <animate attributeName="opacity" begin="enable+4"
+      from="0.9" to="0" dur="3" final="keep"
+      repeatCount="indefinite" repeatDur="7"
+      />
+    <image href="images/sundry/zzz_1.png" width="50%" height="43%" x="145" y="65" />
     </symbol>
 
   </defs>

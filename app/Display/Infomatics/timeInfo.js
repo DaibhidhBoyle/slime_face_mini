@@ -19,8 +19,6 @@ import { systemSetup} from './systemInfo.js';
 //--Display
 //----
 //external file imports
-import { alarmBoot } from '../../Alarm/alarm.js';
-import { alarmByTick } from '../../Alarm/snooze.js';
 //----
 //----
 
@@ -41,18 +39,12 @@ export function timeBoot(){
   //grab clock elements
   let clockHandles = establishClockHandles();
 
-  //display time from system
-  setUpClock(clockHandles);
-
-  //grab heart rate from system
   let hrm = new HeartRateSensor();
 
-  //update and display heart rate
-  hrm.onreading = function() {
-    heartrateHandle.text = `${hrm.heartRate}`;
-  }
+  //display time from system
+  setUpClock(clockHandles,hrm);
 
-  hrm.start();
+
 
 }
 
@@ -65,18 +57,18 @@ function establishClockHandles(){
   }
 }
 
-function setUpClock(clockHandles) {
+function setUpClock(clockHandles, hrm) {
   // clock will update every second (this also means ontick events happen every second)
   clock.granularity = "seconds";
   // ontick events updating clock and system infomatics
   clock.ontick = (evt) => {
     let now = evt.date;
-    updateClock(now, clockHandles);
+    updateClock(now, clockHandles, hrm);
   }
 
 }
 
-function updateClock(now, clockHandles) {
+function updateClock(now, clockHandles, hrm) {
   //update clock displays
   let timeHandles = clockHandles.time;
   let dateHandle = clockHandles.date;
@@ -89,8 +81,15 @@ function updateClock(now, clockHandles) {
   //update battery and steps
   systemSetup(now);
 
-  //time to check against alarms
-  alarmByTick(timeAsString, dayAsString);
+  //grab heart rate from system
+  let hrm = new HeartRateSensor();
+
+  //update and display heart rate
+  hrm.onreading = function() {
+    heartrateHandle.text = `${hrm.heartRate}`;
+  }
+
+  hrm.start();
 }
 
 function getTimeAsString(now, timeHandles) {

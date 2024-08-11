@@ -24,7 +24,8 @@ import { toggleVisibility, toggleOpacity, whichFish } from '../Helper/helper.js'
 //----
 //main body
 
-export function startButtonAnimation(frames, animationTimes, clickData, secondaryAnimationTime = null, secondaryAnimationCallback = null, ) {
+export function startButtonAnimation(frames, animationTimes, clickData) {
+
   // establish time for animation
   let timeFrames = [...animationTimes]
   //activate animation
@@ -41,19 +42,12 @@ export function startButtonAnimation(frames, animationTimes, clickData, secondar
 
 async function visibilityAnimation(frames, times, callback = null) {
   for (let i = 1; i < frames.length; i++) {
-    //if any frames have extra frames they will activate at the same time as main aniamtion
-    if (frames[i].extraFrame) {
-      extraFrameAnimation(frames[i].extraFrame);
-    }
 
     //flicker between frames
     //make new frame visible
     toggleVisibility(frames[i].frame);
 
     //make previous frames invisible
-    if (frames[i - 1].extraFrame && frames[i - 1].extraFrame.animationType === "snap") {
-      extraFrameAnimation(frames[i - 1].extraFrame);
-    }
     toggleVisibility(frames[i - 1].frame);
 
     //wait for next frame uses Promises to make sure the animation is smooth
@@ -62,6 +56,7 @@ async function visibilityAnimation(frames, times, callback = null) {
 
   //activate any "win" animation that isnt dependant on frames from the main animation
   if (typeof callback === 'function') {
+    console.log(callback);
     callback();
   }
 }
@@ -86,16 +81,27 @@ export function showPrizeFish(frames, duration) {
   //pick a fish to show at the end of the fishing animation
   let prizeFish = whichFish(frames);
 
-  temporaryToggleVisabilty(frames.star.image, duration)
   temporaryToggleVisabilty(prizeFish.image, duration)
 }
 
 function temporaryToggleVisabilty(frame, duration){
-  //show a frame for a limited time as not part of an animation
+  console.log("it happened");
+
+  // Show the frame
   toggleVisibility(frame);
-  setTimeout(function () {
+
+  // Use waitForNextFrame to wait for the specified duration
+  waitForNextFrame(duration).then(() => {
+    // Hide the frame after the duration
     toggleVisibility(frame);
-  }, duration);
+  });
+
+
+  // //show a frame for a limited time as not part of an animation
+  // toggleVisibility(frame);
+  // setTimeout(function () {
+  //   toggleVisibility(frame);
+  // }, duration);
 }
 
 

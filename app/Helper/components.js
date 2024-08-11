@@ -33,8 +33,9 @@ export let jumpFramesUnaltered = document.getElementsByClassName("jumpAnimation"
 export let animateDisplayElements = document.getElementsByClassName("fadeDisplayElements")
 export let sleepBubble = document.getElementById("zzz");
 export let fishFramesUnaltered = document.getElementsByClassName("fishAnimation");
+export let fishPrizeAnimation = document.getElementsByClassName("fishPrizeAnimation");
 export let foodAnimation = document.getElementsByClassName("foodAnimation");
-export let exclaimation = document.getElementById("exclaimation");
+export let exclaimationAnimation = document.getElementById("exclaimationAnimation");
 //informatics
 //system elements
 export let heartrateHandle = document.getElementById("heartrateLabel");

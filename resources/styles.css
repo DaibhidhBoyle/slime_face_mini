@@ -307,50 +307,10 @@
 
 /* Fish Win images*/
 
-#star{
+.fishPrizeAnimation{
   position: fixed;
   width: 68%;
   height: 64%;
-  x: 55;
+  x: 40;
   y: 90;
-}
-
-#boot{
-  position: fixed;
-  width: 40%;
-  height: 40%;
-  x: 110;
-  y: 140;
-}
-
-#anchovy{
-  position: fixed;
-  width: 30%;
-  height: 30%;
-  x: 125;
-  y: 165;
-}
-
-#bream{
-  position: fixed;
-  width: 30%;
-  height: 30%;
-  x: 125;
-  y: 165;
-}
-
-#crimson{
-  position: fixed;
-  width: 30%;
-  height: 30%;
-  x: 118;
-  y: 165;
-}
-
-#blobfish{
-  position: fixed;
-  width: 30%;
-  height: 30%;
-  x: 127;
-  y: 155;
 }

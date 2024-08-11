@@ -1,6 +1,6 @@
 <svg>
 
-<use id="backgroundAnimation" href="#background"/>
+<image href="images/background.png" id="background"/>
 
 <text id="batteryLabel"/>
 
@@ -25,7 +25,7 @@
 <g id="cornerButtons">
   <g id= "timerButtons">
   <rect id="fishButton" class="fishClickable" pointer-events="visible" visibility = "visible"/>
-  <image href="images/fishing/anchovy_1.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
+  <image href="images/fishing/anchovy_basic.png" id="fishIcon" class="fishClickable" pointer-events="visible" visibility = "visible"/>
   <rect id="foodButton" class="foodClickable" pointer-events="visible" visibility = "visible"/>
   <image href="images/food/burger_1.png" id="foodIcon" class="foodClickable" pointer-events="visible" visibility = "visible"/>
   </g>
@@ -60,7 +60,7 @@
   <image href="images/slimes/Green/eatSlime_1.png" id="eating" class="coreSlime" visibility =  "hidden"/>
 </g>
 
-<use id="exclaimation" href="#fadeExclaimation" opacity="0" />
+<use id="exclaimationAnimation" href="#exclaimation" class = "foodAnimation" visibility = "hidden"/>
 <use id="zzz" href="#fadezzz"  visibility = "hidden" opacity="0" />
 
 <g id= "foodAnimations">
@@ -70,13 +70,14 @@
 </g>
 
 
+
+
 <g id="fishPrizes">
-  <image href="images/fishing/star_1.png" id="star" class="fishWinImage" visibility = "hidden"/>
-  <image href="images/fishing/boot_1.png" id="boot" class="fishWinImage" visibility = "hidden"/>
-  <image href="images/fishing/anchovy_1.png" id="anchovy" class="fishWinImage" visibility = "hidden"/>
-  <image href="images/fishing/bream_1.png" id="bream" class="fishWinImage" visibility = "hidden"/>
-  <image href="images/fishing/crimson_1.png" id="crimson" class="fishWinImage" visibility = "hidden"/>
-  <image href="images/fishing/blobfish_1.png" id="blobfish" class="fishWinImage" visibility = "hidden"/>
+  <image href="images/fishing/boot.png" class = "fishPrizeAnimation" visibility = "hidden"  />
+  <image href="images/fishing/bream.png" class = "fishPrizeAnimation" visibility = "hidden"  />
+  <image href="images/fishing/crimson.png" class = "fishPrizeAnimation" visibility = "hidden"  />
+  <image href="images/fishing/gold.png" class = "fishPrizeAnimation" visibility = "hidden"  />
+  <image href="images/fishing/blobfish.png" class = "fishPrizeAnimation" visibility = "hidden"  />
 </g>
 
 

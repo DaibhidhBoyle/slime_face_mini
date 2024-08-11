@@ -3,8 +3,8 @@
 import document from "document"
 //----
 //helper imports
-import { fishFramesUnaltered, exclaimation, fishButtons } from '../../Helper/components.js';
-import { animationObjectify } from '../../Helper/helper.js';
+import { fishFramesUnaltered, exclaimationAnimation, fishPrizeAnimation, fishButtons } from '../../Helper/components.js';
+import { animationObjectify, whichFish } from '../../Helper/helper.js';
 //----
 //system imports
 //----
@@ -14,7 +14,7 @@ import { animationObjectify } from '../../Helper/helper.js';
 //--Display
 //----
 //external file imports
-import { startButtonAnimation, showPrizeFish } from '../animations.js';
+import { startButtonAnimation, widgetAnimation, showPrizeFish } from '../animations.js';
 import { makeHappy } from '../../Slime/mood.js';
 //----
 //----
@@ -37,22 +37,17 @@ export function fishButton(mainSlime, clickData) {
   // primary animation
   let fishFrames = setupFishFrames(mainSlime);
   //secondary animation
-  let fishWinFrames = createFishWinFrames();
-
+  let fishPrizeFrames = setupFishPrizeFrames();
 
   //set up time between frames aniamtions
-  let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1300, 500, 1200, 500, 1200, 1000, 0];
-
-  let secondaryAnimationTime = 2500;
+  let fishFrameTimes = [0, 75, 75, 75, 75, 75, 75, 1550, 500, 1500, 500, 1500, 1000, 2500, 0];
 
   //process when button pushed
   let fishClick = () => {
     handleFishButtonClick(
       fishFrames,
       fishFrameTimes,
-      clickData,
-      secondaryAnimationTime,
-      fishWinFrames
+      clickData
     );
   };
 
@@ -60,36 +55,48 @@ export function fishButton(mainSlime, clickData) {
   return fishButtons.map(button => ({ button, callback: fishClick }));
 }
 
-function createFishWinFrames() {
+function setupFishPrizeFrames() {
   //initialise all possible fish win frames with star background
   return {
-    star: { image: document.getElementById("star"), text: "star" },
     boot: { image: document.getElementById("boot"), text: "boot" },
     anchovy: { image: document.getElementById("anchovy"), text: "anchovy" },
     bream: { image: document.getElementById("bream"), text: "bream" },
     crimson: { image: document.getElementById("crimson"), text: "crimson" },
     blobfish: { image: document.getElementById("blobfish"), text: "blob" },
   };
+
+
 }
 
 function setupFishFrames(mainSlime) {
   //prep fish animation frame order
-  let fishFrames = fishFramesUnaltered;
-  fishFrames = [mainSlime, ...fishFrames, fishFrames[6], fishFrames[7], fishFrames[6], fishFrames[7], mainSlime];
-  fishFrames = animationObjectify(fishFrames);
 
-  fishFrames[8].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
-  fishFrames[10].extraFrame = { extraFrame: exclaimation, animationType: "fade", maxOpacity: 0.6, text: "yes" };
-  fishFrames[12].extraFrame = { extraFrame: exclaimation, animationType: "snap", maxOpacity: 0.95, text: "yes" };
+  let fishFrames = fishFramesUnaltered;
+  fishFrames = [mainSlime, ...fishFrames, fishFrames[6], fishFrames[7], fishFrames[6], fishFrames[7], mainSlime, mainSlime];
 
   return fishFrames;
 }
 
-function handleFishButtonClick(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, fishWinFrames) {
+async  function handleFishButtonClick(fishFrames, fishFrameTimes, clickData) {
   // 1 hour passed to makeHappy
   makeHappy(60 * 60 * 1000);
+  let fishPrizePosition = whichFish();
+
+  let fishFrameWithPrize = await addPrizeToFrames(fishFrames, fishPrizePosition);
+
   //send to animate.js
-  startButtonAnimation(fishFrames, fishFrameTimes, clickData, secondaryAnimationTime, () => {
-    showPrizeFish(fishWinFrames, secondaryAnimationTime);
-  });
+  console.log(fishFrameWithPrize.length);
+  startButtonAnimation(fishFrameWithPrize, fishFrameTimes, clickData);
+  widgetAnimation(exclaimationAnimation, 7000);
+}
+
+function addPrizeToFrames(fishFrames, fishPrizePosition) {
+  // Create a shallow copy of fishFrames to avoid modifying the original array
+  let addPrizetoFishFrames = [...fishFrames];
+
+  // Modify the copied array
+  addPrizetoFishFrames[13] = fishPrizeAnimation[fishPrizePosition];
+
+  // Return the modified array processed by animationObjectify
+  return animationObjectify(addPrizetoFishFrames);
 }

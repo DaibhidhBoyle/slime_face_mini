@@ -26,7 +26,7 @@ export let currentColor;
 //main body
 
 //possible colors of slime
-let colors = ["Green", "Pink", "White", "Yellow", "Orange", "Red", "Blue", "Purple"];
+let colors = ["Green", "Pink", "Purple", "Yellow", "Orange", "Red", "Blue", "White"];
 
 export function colorButton(clockElements) {
   currentColor = "Green";
@@ -52,7 +52,7 @@ export function colorButton(clockElements) {
   return colorButtonData;
 }
 
-function handleColorButtonClick(mainSlime, colorSwitchElements) {
+function handleColorButtonClick(colorSwitchElements) {
   //find where we are in color cycle
   let position = colors.indexOf(currentColor);
 
@@ -72,7 +72,7 @@ function handleColorButtonClick(mainSlime, colorSwitchElements) {
 
 function calculateNewPosition(position, direction) {
   //move position in color cycle depending on which button pushed
-    return (position - 1 + colors.length) % colors.length;
+    return (position + 1 + colors.length) % colors.length;
 }
 
 function changeColor(oldColor, newColor, colorSwitchElements) {

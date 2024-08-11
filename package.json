@@ -8,20 +8,18 @@
     "@fitbit/sdk-cli": "^1.7.3"
   },
   "fitbit": {
-    "appUUID": "7c17eef1-fcab-4b8a-9ab7-14bbc9811864",
+    "appUUID": "2ec4fb42-0bc2-4e1f-adf2-bbb01b07b7bf",
     "appType": "clockface",
-    "appDisplayName": "Slimeface",
+    "appDisplayName": "Slime_face_mini",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
     "requestedPermissions": [
       "access_activity",
-      "access_aod",
       "access_exercise",
       "access_heart_rate",
       "access_internet",
       "access_location",
       "run_background",
-      "access_sleep",
       "access_user_profile"
     ],
     "buildTargets": [
