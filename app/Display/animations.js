@@ -131,11 +131,11 @@ export function fadeElement(elements, from, to){
 
 }
 
-export function widgetAnimation(targetAnimation, time){
+export async function widgetAnimation(targetAnimation, time){
   //start an animation from fitbit built in animation method
 
   //make element visible for a period time
-  targetAnimation.style.visibility = "visible"
+  await toggleVisibility(targetAnimation)
   targetAnimation.animate("enable");
 
   //hide element for after the period time
