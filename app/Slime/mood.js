@@ -64,7 +64,7 @@ export function makeSad(){
 }
 
 function rest(){
-  let time = 60 * 1000
+  let time = 5 * 60 * 1000
   vibration.start("nudge-max");
   moodSlime.image = `${getSlimeImagePath()}sleepSlime_1.png`
   widgetAnimation(sleepBubble, time);
