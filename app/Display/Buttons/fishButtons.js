@@ -85,7 +85,6 @@ async  function handleFishButtonClick(fishFrames, fishFrameTimes, clickData) {
   let fishFrameWithPrize = await addPrizeToFrames(fishFrames, fishPrizePosition);
 
   //send to animate.js
-  console.log(fishFrameWithPrize.length);
   startButtonAnimation(fishFrameWithPrize, fishFrameTimes, clickData);
   widgetAnimation(exclaimationAnimation, 7000);
 }

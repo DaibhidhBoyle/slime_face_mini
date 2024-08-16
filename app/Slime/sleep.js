@@ -13,6 +13,7 @@ import { BodyPresenceSensor } from "body-presence";
 //----
 //external file imports
 import { fadeElement, widgetAnimation } from '../Display/animations.js';
+import { getSlimeImagePath, currentColor } from '../Display/Buttons/colorButtons.js';
 //----
 //----
 
@@ -72,12 +73,14 @@ function checkBodyPresence(slime, sleepSlime, sleepBubble, animateSleepElements)
 
 export function sleepMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
-  //toggle main slime to sleep slime and make a pulsing sleep bubble
-  sleepSlime.style.visibility = "visible"
-  slime.style.visibility = "hidden"
-  widgetAnimation(sleepBubble);
+  if (sleepBubble.style.visibility !== "visible"){
+    //toggle main slime to sleep slime and make a pulsing sleep bubble
+    widgetAnimation(sleepBubble);
+  }
   // hide all informatics by fading out
   fadeElement(animateSleepElements, 1, 0);
+  sleepSlime.style.visibility = "visible"
+  slime.style.visibility = "hidden"
   // stop all elements from activating on click apart from sleep slime
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerRemoved);
 
@@ -89,11 +92,13 @@ export function wakeMode(slime, sleepSlime, sleepBubble, animateSleepElements) {
 
     //hide sleep elements
     slime.style.visibility = "visible"
-    sleepBubble.style.visibility = "hidden"
     sleepSlime.style.visibility = "hidden"
     //fade back in all infomatics
     fadeElement(animateSleepElements, 0, 1);
-    sleepBubble.animate("disable");
+    if(slime.image !== `${getSlimeImagePath()}sleepSlime_1.png`){
+      sleepBubble.style.visibility = "hidden"
+      sleepBubble.animate("disable");
+    }
   }
   //reactivate all elements abilty to be clicked
   eventListenersHandler(buttonsAndCallbacksWithoutSleep, eventListenerSetup);

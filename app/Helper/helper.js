@@ -97,7 +97,6 @@ export function toggleVisibility(element){
 }
 
 export function toggleManyVisibility(elements){
-  console.log("toggle many");
   //change visibilty of all elements in an array
   elements.forEach((element) => {
     toggleVisibility(element)

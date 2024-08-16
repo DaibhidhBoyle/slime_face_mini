@@ -56,7 +56,7 @@ function handleFoodButtonClick(clickData, eatFrames) {
   // check what food will appear
   let prizeFoodAnimation = foodAnimation[Math.floor(Math.random() * foodAnimation.length)];
   // 30 minutes sent to be happy
-  makeHappy(15 * 60 * 1000);
+  makeHappy(1 * 60 * 1000, true);
   //send to animate.js to show slime eating
   startButtonAnimation(eatFrames, [0, 675, 400, 266, 400, 266, 0], clickData);
     //send to animate.js to show food being eaten

@@ -85,3 +85,8 @@ function replaceColor(element, oldColor, newColor) {
   let colorChangeRegex = new RegExp(oldColor, "g");
   element.image = element.image.replace(colorChangeRegex, newColor);
 }
+
+export function getSlimeImagePath() {
+  //update slimes to show correctr color reguardless of mood
+  return `images/slimes/${currentColor}/`;
+}

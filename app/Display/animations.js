@@ -3,6 +3,7 @@
 import document from "document";
 //----
 //helper imports
+import { sleepSlime } from '../Helper/components.js';
 import { toggleVisibility, toggleOpacity, whichFish } from '../Helper/helper.js';
 //----
 //system imports
@@ -56,13 +57,12 @@ async function visibilityAnimation(frames, times, callback = null) {
 
   //activate any "win" animation that isnt dependant on frames from the main animation
   if (typeof callback === 'function') {
-    console.log(callback);
     callback();
   }
 }
 
 function waitForNextFrame(ms) {
-    //Promises to make sure the animation is smooth
+  //Promises to make sure the animation is smooth
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -85,7 +85,6 @@ export function showPrizeFish(frames, duration) {
 }
 
 function temporaryToggleVisabilty(frame, duration){
-  console.log("it happened");
 
   // Show the frame
   toggleVisibility(frame);
@@ -141,8 +140,10 @@ export async function widgetAnimation(targetAnimation, time){
   //hide element for after the period time
   if (typeof time === 'number') {
     setTimeout(function () {
-      targetAnimation.style.visibility = "hidden"
-      targetAnimation.animate("disable");
+      if(sleepSlime.style.visibility !== "visible"){
+        targetAnimation.style.visibility = "hidden"
+        targetAnimation.animate("disable");
+      }
     }, time);
   }
 }
