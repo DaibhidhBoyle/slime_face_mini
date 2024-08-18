@@ -42,7 +42,7 @@ export function timeBoot(){
   let hrm = new HeartRateSensor();
 
   //display time from system
-  setUpClock(clockHandles,hrm);
+  setUpClock(clockHandles, hrm);
 
 
 

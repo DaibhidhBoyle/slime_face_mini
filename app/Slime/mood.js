@@ -11,7 +11,7 @@ import { vibration } from "haptics";
 //local file imports
 //----
 //external file imports
-import { getSlimeImagePath, currentColor } from '../Display/Buttons/colorButtons.js';
+import { getSlimeImagePath } from '../Display/Buttons/colorButtons.js';
 import { widgetAnimation } from '../Display/animations.js';
 //----
 //----
@@ -39,14 +39,20 @@ export function moodBoot(slime) {
 }
 
 export function makeHappy(time, isFromFood){
-
+  let restTime = 5 * 60 * 1000
   //change main slime to "happy" version for a period of time
-    moodSlime.image = `${getSlimeImagePath()}mainSlime_1.png`;
-    if (!isFromFood){
-      //switch back to sad after period of time
-      resetTimeout(time, makeSad);
-    } else {
-      resetTimeout(time, rest)
+  moodSlime.image = `${getSlimeImagePath()}mainSlime_1.png`;
+  if(sleepBubble.style.visibility === "visible"){
+    sleepBubble.style.visibility = "hidden"
+  }
+  if (!isFromFood){
+    //switch back to sad after period of time
+    resetTimeout(time, makeSad);
+  } else {
+    resetTimeout(time, () => {
+      rest(restTime);
+      resetTimeout(restTime, makeSad);
+    });
   }
 }
 
@@ -63,12 +69,10 @@ export function makeSad(){
   slimeCheckInterval = setInterval(slimeCheckIn, 5 * 60 * 1000);
 }
 
-function rest(){
-  let time = 5 * 60 * 1000
+function rest(time){
   vibration.start("nudge-max");
   moodSlime.image = `${getSlimeImagePath()}sleepSlime_1.png`
   widgetAnimation(sleepBubble, time);
-  resetTimeout(time, makeSad)
 }
 
 function resetTimeout(time, callback) {
